@@ -25,11 +25,11 @@ public class FinalGame extends Game {
 
         gamePad = new GamePad();
         player = new Player(gamePad);
-        player.teleport(250, 250);
-        world = new World();
+        player.teleport(400, 400);
+        world = new World(player);
         world.load();
 
-        RenderingEngine.getInstance().getScreen().fullscreen();
+        //RenderingEngine.getInstance().getScreen().fullscreen();
         //RenderingEngine.getInstance().getScreen().hideCursor();
     }
 
@@ -40,6 +40,7 @@ public class FinalGame extends Game {
         }
 
         player.update();
+        world.update();
     }
 
     @Override
