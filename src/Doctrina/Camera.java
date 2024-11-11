@@ -13,6 +13,7 @@ public class Camera extends MovableEntity{
         this.player = player;
         posX = 0;
         posY= 0;
+        teleport(player.getX(), player.getY());
         this.setDimension(15,15);
     }
 

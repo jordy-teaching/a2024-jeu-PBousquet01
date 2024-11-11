@@ -32,4 +32,8 @@ public class Canvas {
     public void drawImage(Image image, int x, int y) {
         graphics.drawImage(image, x, y, null);
     }
+
+    public void clear(int x,int y, int width, int height){
+        graphics.clearRect(x,y,width,height);
+    }
 }

@@ -36,7 +36,7 @@ public class World {
     }
 
     public void draw(Canvas canvas) {
-        canvas.drawImage(background, 0-camera.getX(), -40 - camera.getY());
+        canvas.drawImage(background, 384- camera.getX(), 200- camera.getY());
         camera.draw(canvas);
     }
 }

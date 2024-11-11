@@ -29,7 +29,7 @@ public class FinalGame extends Game {
         world = new World(player);
         world.load();
 
-        //RenderingEngine.getInstance().getScreen().fullscreen();
+        RenderingEngine.getInstance().getScreen().fullscreen();
         //RenderingEngine.getInstance().getScreen().hideCursor();
     }
 
@@ -45,6 +45,7 @@ public class FinalGame extends Game {
 
     @Override
     protected void draw(Canvas canvas) {
+        canvas.clear(0,0,RenderingEngine.getInstance().getScreen().getWidth(),RenderingEngine.getInstance().getScreen().getHeight());
         world.draw(canvas);
         player.draw(canvas);
     }

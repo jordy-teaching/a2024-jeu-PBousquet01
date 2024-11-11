@@ -88,13 +88,13 @@ public class Player extends ControllableEntity {
     @Override
     public void draw(Canvas canvas) {
         if (getDirection() == Direction.DOWN) {
-            canvas.drawImage(downFrames[currentAnimationFrame], x, y);
+            canvas.drawImage(downFrames[currentAnimationFrame], 400, 350);
         } else if (getDirection() == Direction.UP) {
-            canvas.drawImage(upFrames[currentAnimationFrame], x, y);
+            canvas.drawImage(upFrames[currentAnimationFrame], 400, 350);
         } else if (getDirection() == Direction.RIGHT) {
-            canvas.drawImage(rightFrames[currentAnimationFrame], x, y);
+            canvas.drawImage(rightFrames[currentAnimationFrame], 400, 350);
         } else if (getDirection() == Direction.LEFT) {
-            canvas.drawImage(leftFrames[currentAnimationFrame], x, y);
+            canvas.drawImage(leftFrames[currentAnimationFrame], 400, 350);
         }
     }
 }
