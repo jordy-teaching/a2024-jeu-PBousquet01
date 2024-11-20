@@ -25,7 +25,7 @@ public class FinalGame extends Game {
 
         gamePad = new GamePad();
         player = new Player(gamePad);
-        player.teleport(400, 400);
+        player.teleport(742,600);
         world = new World(player);
         world.load();
 

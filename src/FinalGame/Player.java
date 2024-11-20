@@ -1,9 +1,7 @@
 package FinalGame;
 
+import Doctrina.*;
 import Doctrina.Canvas;
-import Doctrina.ControllableEntity;
-import Doctrina.Direction;
-import Doctrina.MovementController;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
@@ -88,13 +86,13 @@ public class Player extends ControllableEntity {
     @Override
     public void draw(Canvas canvas) {
         if (getDirection() == Direction.DOWN) {
-            canvas.drawImage(downFrames[currentAnimationFrame], 400, 350);
+            canvas.drawImage(downFrames[currentAnimationFrame], 400,400);
         } else if (getDirection() == Direction.UP) {
-            canvas.drawImage(upFrames[currentAnimationFrame], 400, 350);
+            canvas.drawImage(upFrames[currentAnimationFrame], 400, 400);
         } else if (getDirection() == Direction.RIGHT) {
-            canvas.drawImage(rightFrames[currentAnimationFrame], 400, 350);
+            canvas.drawImage(rightFrames[currentAnimationFrame], 400, 400);
         } else if (getDirection() == Direction.LEFT) {
-            canvas.drawImage(leftFrames[currentAnimationFrame], 400, 350);
+            canvas.drawImage(leftFrames[currentAnimationFrame], 400, 400);
         }
     }
 }

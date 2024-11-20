@@ -4,22 +4,30 @@ import FinalGame.Player;
 
 import java.awt.*;
 
-public class Camera extends MovableEntity{
+public class Camera extends StaticEntity{
     private Player player;
-    int posX;
-    int posY;
+    private int offsetX;
+    private int offsetY;
+    Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 
+    public int getOffsetX() {
+        return offsetX;
+    }
+
+    public int getOffsetY() {
+        return offsetY;
+    }
     public Camera(Player player) {
         this.player = player;
-        posX = 0;
-        posY= 0;
-        teleport(player.getX(), player.getY());
+        offsetX = player.getX()- screenSize.width/2;
+        offsetY = player.getY()-screenSize.height/2;
         this.setDimension(15,15);
     }
 
     public void update() {
         if(player.hasMoved()){
-            teleport(player.getX(), player.getY());
+            offsetX = player.getX()- screenSize.width/2;
+            offsetY = player.getY()- screenSize.height/2;
         }
     }
 

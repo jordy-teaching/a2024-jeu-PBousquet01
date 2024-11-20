@@ -16,7 +16,7 @@ public class World {
 
     public World(Player player) {
         this.player = player;
-        this.camera = new Camera(player);
+        camera = new Camera(player);
     }
 
     public void update() {
@@ -36,7 +36,9 @@ public class World {
     }
 
     public void draw(Canvas canvas) {
-        canvas.drawImage(background, 384- camera.getX(), 200- camera.getY());
+        //Mode trailer(remove camera.getX())
+        //canvas.drawImage(background, camera.getOffsetX(), camera.getOffsetY());
+        canvas.drawImage(background, camera.getX() -camera.getOffsetX(), camera.getY() -camera.getOffsetY());
         camera.draw(canvas);
     }
 }
