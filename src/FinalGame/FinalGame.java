@@ -25,11 +25,20 @@ public class FinalGame extends Game {
 
         gamePad = new GamePad();
         player = new Player(gamePad);
-        player.teleport(742,600);
+        player.teleport(760,800);
         world = new World(player);
         world.load();
+        try{
+            Clip clip = AudioSystem.getClip();
+            AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(getClass().getClassLoader().getResourceAsStream("audios/Normal.wav"));
+            clip.open(audioInputStream);
+            clip.loop(Clip.LOOP_CONTINUOUSLY);
+            clip.start();
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+        }
 
-        RenderingEngine.getInstance().getScreen().fullscreen();
+        //RenderingEngine.getInstance().getScreen().fullscreen();
         //RenderingEngine.getInstance().getScreen().hideCursor();
     }
 

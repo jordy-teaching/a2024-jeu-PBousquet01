@@ -17,6 +17,7 @@ public class World {
     public World(Player player) {
         this.player = player;
         camera = new Camera(player);
+        player.setCam(camera);
     }
 
     public void update() {
@@ -36,7 +37,7 @@ public class World {
     }
 
     public void draw(Canvas canvas) {
-        //Mode trailer(remove camera.getX())
+        //Mode triller(remove camera.getX())
         //canvas.drawImage(background, camera.getOffsetX(), camera.getOffsetY());
         canvas.drawImage(background, camera.getX() -camera.getOffsetX(), camera.getY() -camera.getOffsetY());
         camera.draw(canvas);

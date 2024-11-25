@@ -9,7 +9,15 @@ public class Camera extends StaticEntity{
     private int offsetX;
     private int offsetY;
     Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+    private int halfscreenX = screenSize.width/2;
+    private int halfscreenY = screenSize.height/2;
 
+    public int getHalfscreenX() {
+        return halfscreenX;
+    }
+    public int getHalfscreenY() {
+        return halfscreenY;
+    }
     public int getOffsetX() {
         return offsetX;
     }
@@ -19,15 +27,15 @@ public class Camera extends StaticEntity{
     }
     public Camera(Player player) {
         this.player = player;
-        offsetX = player.getX()- screenSize.width/2;
-        offsetY = player.getY()-screenSize.height/2;
-        this.setDimension(15,15);
+        offsetX = player.getX()- halfscreenX;
+        offsetY = player.getY()-halfscreenY;
+        //this.setDimension(15,15);
     }
 
     public void update() {
         if(player.hasMoved()){
-            offsetX = player.getX()- screenSize.width/2;
-            offsetY = player.getY()- screenSize.height/2;
+            offsetX = player.getX()- halfscreenX;
+            offsetY = player.getY()- halfscreenY;
         }
     }
 
