@@ -23,6 +23,9 @@ public abstract class StaticEntity {
     public boolean intersectWith(StaticEntity entity) {
         return getBounds().intersects(entity.getBounds());
     }
+    public boolean intersectWith(int posX, int posY, int width, int height) {
+        return getBounds().intersects(new Rectangle(posX,posY,width,height));
+    }
 
     protected Rectangle getBounds() {
         return new Rectangle(x, y, width, height);

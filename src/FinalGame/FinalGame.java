@@ -25,7 +25,8 @@ public class FinalGame extends Game {
 
         gamePad = new GamePad();
         player = new Player(gamePad);
-        player.teleport(760,800);
+        player.teleport(400,500);
+        //player.teleport(0,0);
         world = new World(player);
         world.load();
         try{
@@ -38,7 +39,7 @@ public class FinalGame extends Game {
             System.out.println(e.getMessage());
         }
 
-        //RenderingEngine.getInstance().getScreen().fullscreen();
+        RenderingEngine.getInstance().getScreen().fullscreen();
         //RenderingEngine.getInstance().getScreen().hideCursor();
     }
 
@@ -47,7 +48,9 @@ public class FinalGame extends Game {
         if (gamePad.isQuitPressed()) {
             stop();
         }
-
+        if(world.getEnemy().intersectWith(player)){
+            System.out.println("WE HAVE COLLIDED");
+        }
         player.update();
         world.update();
     }

@@ -12,16 +12,25 @@ public class World {
     private Camera camera;
     private Player player;
 
+    public Enemy getEnemy() {
+        return enemy;
+    }
+
+    private Enemy enemy;
+
     private Image background;
 
     public World(Player player) {
         this.player = player;
+        enemy = new Enemy(800,200);
+        enemy.teleport(400,280);
         camera = new Camera(player);
-        player.setCam(camera);
+        player.initCam(camera);
     }
 
     public void update() {
         camera.update();
+        enemy.update();
     }
 
     public void load() {
@@ -39,7 +48,7 @@ public class World {
     public void draw(Canvas canvas) {
         //Mode triller(remove camera.getX())
         //canvas.drawImage(background, camera.getOffsetX(), camera.getOffsetY());
-        canvas.drawImage(background, camera.getX() -camera.getOffsetX(), camera.getY() -camera.getOffsetY());
-        camera.draw(canvas);
+        canvas.drawImage(background, -camera.getX(), -camera.getY());
+        canvas.drawRectangle(enemy.getX() -camera.getX(), enemy.getY() -camera.getY(), enemy.getWidth(), enemy.getHeight(), Color.RED);
     }
 }
