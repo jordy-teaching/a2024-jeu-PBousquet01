@@ -10,17 +10,8 @@ import java.io.IOException;
 
 public class Player extends ControllableEntity {
     private static final String SPRITE_PATH = "images/Joker.png";
-
     private Camera cam;
     private Animator animator;
-
-    public int getRelativeX() {
-        return relativeX;
-    }
-
-    public int getRelativeY() {
-        return relativeY;
-    }
 
     private int relativeX;
     private int relativeY;

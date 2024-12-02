@@ -7,6 +7,7 @@ import FinalGame.*;
 import FinalGame.GamePad;
 import FinalGame.Player;
 import FinalGame.World;
+import Viking.SoundEffect;
 
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
@@ -28,7 +29,6 @@ public class FinalGame extends Game {
         player.teleport(400,500);
         //player.teleport(0,0);
         world = new World(player);
-        world.load();
         try{
             Clip clip = AudioSystem.getClip();
             AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(getClass().getClassLoader().getResourceAsStream("audios/Normal.wav"));
@@ -49,7 +49,14 @@ public class FinalGame extends Game {
             stop();
         }
         if(world.getEnemy().intersectWith(player)){
-            System.out.println("WE HAVE COLLIDED");
+            try{
+                Clip clip = AudioSystem.getClip();
+                AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(getClass().getClassLoader().getResourceAsStream("audios/murloc.wav"));
+                clip.open(audioInputStream);
+                clip.start();
+            }catch (Exception e){
+                System.out.println(e.getMessage());
+            }
         }
         player.update();
         world.update();
