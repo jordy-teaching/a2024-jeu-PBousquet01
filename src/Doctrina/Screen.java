@@ -41,6 +41,7 @@ public class Screen {
             frame.setVisible(false);
         }
         frame.setSize(width, height);
+        System.out.println(width + "-" + height);
         frame.setLocationRelativeTo(null);
         if (frameIsVisible) {
             frame.setVisible(true);

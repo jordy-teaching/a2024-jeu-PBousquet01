@@ -7,6 +7,9 @@ import java.awt.image.BufferedImage;
 
 public class RenderingEngine {
 
+    private static final int SCREEN_WIDTH = 650;
+    private static final int SCREEN_HEIGHT = 450;
+
     private static RenderingEngine instance;
     private JPanel panel;
     private BufferedImage bufferedImage;
@@ -76,8 +79,8 @@ public class RenderingEngine {
 
     private void initializeScreen() {
         screen = new Screen();
-        screen.setSize(800, 600);
-        bufferedImage = new BufferedImage(800, 600,
+        screen.setSize(SCREEN_WIDTH, SCREEN_HEIGHT);
+        bufferedImage = new BufferedImage(SCREEN_WIDTH, SCREEN_HEIGHT,
                 BufferedImage.TYPE_INT_RGB);
     }
 }

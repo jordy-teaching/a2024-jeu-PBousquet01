@@ -23,6 +23,9 @@ public class Canvas {
     public void drawRectangle(StaticEntity entity, Paint paint) {
         drawRectangle(entity.x, entity.y, entity.width, entity.height, paint);
     }
+    public void drawRectangle(Rectangle rectangle, Paint paint){
+        drawRectangle(rectangle.x, rectangle.y, rectangle.width, rectangle.height, paint);
+    }
 
     public void drawRectangle(int x, int y, int width, int height, Paint paint) {
         graphics.setPaint(paint);
@@ -31,5 +34,16 @@ public class Canvas {
 
     public void drawImage(Image image, int x, int y) {
         graphics.drawImage(image, x, y, null);
+    }
+
+    public void drawText(String text,int x, int y){
+        graphics.setPaint(Color.RED);
+        graphics.setFont(new Font("Calibri", Font.BOLD, 32));
+        graphics.drawString(text,x,y);
+    }
+
+
+    public void clear(int x,int y, int width, int height){
+        graphics.clearRect(x,y,width,height);
     }
 }
