@@ -89,13 +89,13 @@ public class Enemy extends MovableEntity {
         if(!vertical){
             return new Rectangle(posX,posY+32,32,25);
         }
-        return new Rectangle(posX,posY+32,32,25);
+        return new Rectangle(posX+25,posY,25,32);
     }
     private Rectangle getRightSight(Direction direction, int posX, int posY){
         if(!vertical){
             return new Rectangle(posX,posY-25,32,32);
         }
-        return new Rectangle(posX,posY,32,32);
+        return new Rectangle(posX-32,posY,32,32);
     }
     private Rectangle getFrontSight(Direction direction, int posX, int posY){
         if(!vertical){
@@ -105,8 +105,8 @@ public class Enemy extends MovableEntity {
             return new Rectangle(posX-160,posY-25,160,82);
         }
         if (direction == Direction.DOWN){
-            return new Rectangle(posX+32,posY+32,82,160);
+            return new Rectangle(posX-32,posY+32,82,160);
         }
-        return new Rectangle(posX+32,posY,82,160);
+        return new Rectangle(posX-32,posY-160,82,160);
     }
 }
