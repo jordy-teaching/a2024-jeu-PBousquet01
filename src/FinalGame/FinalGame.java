@@ -15,6 +15,7 @@ public class FinalGame extends Game {
 
     private int soundCooldown;
     private boolean wasSeen;
+    private boolean won;
 
     @Override
     protected void initialize() {
@@ -25,6 +26,7 @@ public class FinalGame extends Game {
         player.teleport(2615,4800);
         world = new World(player);
         wasSeen = false;
+        won = false;
         try{
             Clip clip = AudioSystem.getClip();
             AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(getClass().getClassLoader().getResourceAsStream("audios/Normal.wav"));
@@ -44,9 +46,12 @@ public class FinalGame extends Game {
         if (gamePad.isQuitPressed()) {
             stop();
         }
-        if (!player.isSighted()){
+        if (!player.isSighted() || !won){
             player.update();
             world.update();
+            if(player.intersectWith(4928,352,32,32)){
+                won = true;
+            }
         } else if(!wasSeen){
             wasSeen = true;
            SoundEffect.MURLOC.play();
@@ -60,8 +65,11 @@ public class FinalGame extends Game {
         if (!player.isSighted()){
             world.draw(canvas);
             player.draw(canvas);
+            if(won){
+                canvas.drawText("Won",275,200);
+            }
         }else {
-            canvas.drawText("Game Over",250,200);
+            canvas.drawText("Game Over",275,200);
         }
     }
 }
