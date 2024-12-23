@@ -1,11 +1,10 @@
-package Viking;
+package FinalGame;
 
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 
 public enum SoundEffect {
-    FIRE("audios/fire.wav"),
     MURLOC("audios/murloc.wav");
 
     private final String path;

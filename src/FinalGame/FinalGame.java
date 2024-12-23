@@ -3,11 +3,6 @@ package FinalGame;
 import Doctrina.Canvas;
 import Doctrina.Game;
 import Doctrina.RenderingEngine;
-import FinalGame.*;
-import FinalGame.GamePad;
-import FinalGame.Player;
-import FinalGame.World;
-import Viking.SoundEffect;
 
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
@@ -19,6 +14,7 @@ public class FinalGame extends Game {
     private World world;
 
     private int soundCooldown;
+    private boolean wasSeen;
 
     @Override
     protected void initialize() {
@@ -26,9 +22,9 @@ public class FinalGame extends Game {
 
         gamePad = new GamePad();
         player = new Player(gamePad);
-        player.teleport(400,500);
-        //player.teleport(0,0);
+        player.teleport(2615,4800);
         world = new World(player);
+        wasSeen = false;
         try{
             Clip clip = AudioSystem.getClip();
             AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(getClass().getClassLoader().getResourceAsStream("audios/Normal.wav"));
@@ -48,24 +44,24 @@ public class FinalGame extends Game {
         if (gamePad.isQuitPressed()) {
             stop();
         }
-        if(world.getEnemy().intersectWith(player)){
-            try{
-                Clip clip = AudioSystem.getClip();
-                AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(getClass().getClassLoader().getResourceAsStream("audios/murloc.wav"));
-                clip.open(audioInputStream);
-                clip.start();
-            }catch (Exception e){
-                System.out.println(e.getMessage());
-            }
+        if (!player.isSighted()){
+            player.update();
+            world.update();
+        } else if(!wasSeen){
+            wasSeen = true;
+           SoundEffect.MURLOC.play();
         }
-        player.update();
-        world.update();
+
     }
 
     @Override
     protected void draw(Canvas canvas) {
         canvas.clear(0,0,RenderingEngine.getInstance().getScreen().getWidth(),RenderingEngine.getInstance().getScreen().getHeight());
-        world.draw(canvas);
-        player.draw(canvas);
+        if (!player.isSighted()){
+            world.draw(canvas);
+            player.draw(canvas);
+        }else {
+            canvas.drawText("Game Over",250,200);
+        }
     }
 }
